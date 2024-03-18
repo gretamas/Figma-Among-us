@@ -1,1 +1,3 @@
-# Sigma-Among-us
+# Figma-Among-us
+
+Figma design
