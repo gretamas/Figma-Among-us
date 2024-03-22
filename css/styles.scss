@@ -4,20 +4,56 @@ body{
 
 /* Helper classes */
 
-@mixin PTSans($font-size: 18px){
+$primaryTextColor: #FFFFFF;
+
+@mixin PTSans($font-size: 18px, $font-weight: 700){
 font-family: PT Sans;
-font-weight: 700;
 font-size: $font-size;
+font-weight: $font-weight;
 }
 
 @mixin Inter($font-size: 17px, $font-weight: 700){
-font-family: Inter;
+ font-family: Inter;
  font-size: $font-size;
- font-weight: 700;
+ font-weight: $font-weight;
+}
+
+%primaryBtn{
+ border-radius: 27px;
+ border: 1px solid #2D75B6;
+ background-color: #2D75B6;
+ color: $primaryTextColor;
+ @include PTSans(20px);
+ line-height: 22px;
+}
+
+%gridText{
+    @include PTSans(18px, 400);
+    line-height: 27px;
+    color: $primaryTextColor;
+    margin-left: 25px;
+}
+
+%gridTitle{
+ @include PTSans(27px, 400);
+ line-height: 38px;
+ text-align: center;
+ color: $primaryTextColor;
+       
+ span{
+ @include PTSans(27px);
+ }
+}
+
+%gridImg{
+ width: 40px;
+ height: 52px;
+ padding-left: 22px;    
 }
 
 
 /* Main nav */
+
 .main-nav {
     width: 1512px;
     height: 107px;
@@ -45,12 +81,12 @@ font-family: Inter;
     }
 
     a{
-        @include PTSans();
+        @include PTSans(18px);
         width: 42px;
         height: 22px;
         line-height: 22px;
         letter-spacing: 1px;
-        color: white;
+        color: $primaryTextColor;
     }
 
     svg{
@@ -75,14 +111,15 @@ font-family: Inter;
 }
 
   /* promotion bar */
+
 .promotion-bar{
     width: 1512px;
     height: 59px;
     background-color: #C61111;
-    color: #FFFFFF;
+    color: $primaryTextColor;
     display: flex;
 
-    h2{
+    h3{
     @include PTSans($font-size: 16px);
     line-height: 18px;
     letter-spacing: 1.5px;
@@ -101,12 +138,12 @@ font-family: Inter;
 }
 
 .promotion-bar__date{
- @include Inter($font-size: 14px);
+ @include Inter(14px);
  line-height: 19px;
 }
 
 .promotion-bar__description{
- @include Inter($font-weight: 400);
+ @include Inter(17px, 400);
 }
 
 .trailer-section{
@@ -119,6 +156,7 @@ font-family: Inter;
     }
 }
 
+/* Trailer section */
 .trailer-section__content{
  width: 570px;
  height: 253px;
@@ -139,15 +177,12 @@ font-family: Inter;
  width: 239px;
  height: 54px;
  padding:  16px 47px 16px 46px;
- border-radius: 27px;  
- border: 1px solid #2D75B6;  
- background-color: #2D75B6;
- color: #FFFFFF;
- @include PTSans($font-size: 20px);
- line-height: 22px;
+ @extend %primaryBtn;
  }
 }
 
+
+/* About us*/
 .about-us__content{
     text-align: center;
     width: 1512px;
@@ -160,7 +195,7 @@ font-family: Inter;
  h1{
  width: 548px;
  height: 108px;
- color: #FFFFFF;
+ color: $primaryTextColor;
  @include PTSans(45px);
  line-height: 54px;
  grid-area: 1 / 2 / 1 / 2;
@@ -172,21 +207,14 @@ font-family: Inter;
  p{
  width: 667px;
  height: 81px;
- color: #FFFFFF;
- @include PTSans(27px);
- font-weight: 400;
+ color: $primaryTextColor;
+ @include PTSans(27px, 400);
  line-height: 41px;
  top: 169px;
  grid-area: 2 / 2 / 2 / 2;
  align-self: flex-start;
  justify-self: center;
  }
-}
-
-.about-us__yellow-player{
-    width: 100px;
-    grid-area: 1 / 1 / 1 / 1;
-    justify-self: center;
 }
 
 .about-us__stars-icon4{
@@ -201,12 +229,7 @@ font-family: Inter;
     justify-self: start;   
 }
 
-.about-us__red-player{
-    width: 100px;
-    height: 145px;
-    grid-area: 2 / 3 / 2 / 3; 
-    justify-self: center;
-}
+/* Awards*/
 
 .awards{
  display: grid;
@@ -214,7 +237,6 @@ font-family: Inter;
  grid-template-rows: (3, 142px);
  gap: 26px;
  margin: 40px 183px 55px;
-
 
  div{
     background-color: #FFFFFF16;
@@ -225,7 +247,7 @@ font-family: Inter;
  }
 
  h3{
-    @include Inter($font-size: 18px);
+    @include Inter(18px);
     line-height: 23px;
  }
 
@@ -278,17 +300,19 @@ font-family: Inter;
     grid-area: 3 / 1 / 3 / 1;
 }
 
+/* Screenshots section*/
+
 .screenshots-section{
  width: 1164px;
- height: 750.88px;
- margin: 68px 174px;
+ height: 750px;
+ margin: 68px 196px 67px;
 
  h2{
- @include PTSans($font-size: 20px);
+ @include PTSans(20px);
  line-height: 24px;
  letter-spacing: 2px;
  text-align: center;
- color: #FFFFFF;
+ color: $primaryTextColor;
  margin-bottom: 32px;
  }
 }
@@ -328,6 +352,236 @@ font-family: Inter;
 .screenshoots__img7{
     grid-area: 3 / 2 / 3 / 2;
 }
+
+/* Play section*/
+
+.play{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 200px, 721px, 200px;
+    margin-left: 130px;
+}
+
+.play__icons--left{
+    grid-area: 1 / 1 / 1 / 1;
+    display: grid;
+    grid-template-rows: repeat(3, 150px);
+    grid-template-columns: repeat(2, 100px);
+
+    .black-player{
+        grid-area: 1 / 1 / 1 / 1;
+    }
+
+    .stars06{
+        grid-area: 1 / 2 / 1 / 2;
+        justify-self: end;
+    }
+
+    .green-player{
+        grid-area: 2 / 2 / 2 / 2;
+    }
+
+    .stars06-repeat{
+        grid-area: 3/1/3/1;
+    }
+}
+
+.play__description{
+    grid-area: 1/2/1/2;
+    display: grid;
+    grid-template-rows: 55px, 203px;
+    grid-template-columns: 721px;
+    row-gap: 0px;
+
+    h2{
+     @include PTSans(45px);
+     color: $primaryTextColor;
+     line-height: 54px;
+     text-align: center;
+     grid-area: 1/1/1/1;
+    }
+
+    p{
+     @include PTSans(27px);
+     line-height: 40.5px;
+     text-align: center;
+     color: $primaryTextColor;
+     grid-area: 2/1/2/1;
+     span{
+        color: #FC4E73;
+     }
+    }
+    
+}
+
+.play__icons--right{
+    grid-area: 1/3/1/3;
+    display: grid;
+    grid-template-rows: repeat(3, 115px);
+    grid-template-columns: repeat(2, 100px);
+
+    .stars07{
+        grid-area: 1/1/1/1;
+    }
+
+    .stars04{
+        grid-area: 2/2/2/2;
+    }
+
+    .purple-player{
+        grid-area: 3/2/3/2;
+    }
+}
+
+
+/* Crew section*/
+.crew{
+ width: 1164px;
+ height: 375px;
+ margin-left: 174px;
+ 
+ img{
+   display: block; 
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 27px
+ }
+
+ h2{
+    @extend %gridTitle;
+ }
+
+ div{
+     
+    p{
+     @extend %gridText;
+    }
+
+    img{
+        @extend %gridImg
+    }    
+ }
+
+}
+
+.crew-grid{
+ width: 1152px;
+ height: 175px;
+ display: grid;
+ grid-template-rows: 81px, 54px;
+ grid-template-columns: repeat(3, 1fr);
+ column-gap: 32px;
+ row-gap: 24px;
+ margin-top: 50px;
+
+ div{
+    display: flex;
+ }
+
+}
+
+/* Impostor section*/
+
+.impostor{
+ width: 1164px;
+ height: 378px;
+ margin: 91px 174px 78px;
+ position: relative;
+
+ .impostor__img-stars{
+ position: absolute;
+ left: 133px;
+ }
+
+ .impostor__stars09{
+    position: absolute;
+    top: 167px;
+    right: 0px;
+    z-index: 0;
+ }
+
+ .impostor__red-star{
+    position: absolute;
+    top: 175px;
+    right: 0px;
+    width: 38.53px;
+    height: 60.94px;
+    transform: rotate(4deg);
+    z-index: 1;
+ }
+
+ img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 27px;
+ }
+
+ h2{
+    @extend %gridTitle;
+    margin-bottom: 36px;
+ }
+
+}
+
+.impostor__grid{
+ display: grid;
+ grid-template-rows: repeat(2, 75px);
+ grid-template-columns: repeat(3, 352px);
+ column-gap: 32px;
+ row-gap: 22px;
+
+ div{
+    display: flex;
+ }
+
+  p{
+    @extend %gridText;
+  }  
+
+  img{
+  @extend %gridImg
+  }
+}
+
+.shop{
+    position: relative;
+}
+
+
+.shop__content{
+    position: absolute;
+    top: 137px;
+    left: 196px;
+
+    h2{
+     width: 308px;
+     height: 50px;
+     @include PTSans(41px);
+     color: $primaryTextColor;
+     line-height: 49px;
+     margin-bottom: 22px;
+    }
+
+    p{
+     width: 229px;
+     height: 33px;
+     @include PTSans(22px, 400);
+     color: $primaryTextColor;
+     line-height: 33px;
+     margin-bottom: 33px;
+    }
+
+    button{
+     width: 192px;
+     height: 56px;
+     padding: 15px 53px;
+     @extend %primaryBtn;
+    }
+}
+
+
+
 
 
 
